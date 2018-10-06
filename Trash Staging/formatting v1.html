@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+	  <!--Import materialize.css-->
+	  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		
+		<style>
+			img {
+					max-width: 100%;
+					max-height: 100%;
+			}
+			div.main {
+					padding-left: 5%;
+					padding-right: 5%;
+					padding-top:5%;
+			}
+			div.note {
+					margin: 10px;
+					padding-left: 50px;
+					padding-right: 50px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!--Site Navigation-->
+  <nav>
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="modal-trigger" href="#modal">Motivation</a></li>
+        <li class="active"><a href="">Results</a></li>
+        <li><a href="">Research</a></li>
+        <li><a href="">Source Code</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+		<!-- Modal Trigger -->
+  <button data-target="modal1" class="btn modal-trigger">Modal</button>
+	
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+	
+	  <!--Import jQuery before materialize.js-->
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+		// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+		$('.modal-trigger').leanModal();
+		});
+	</script>
+	</body>
+</html>

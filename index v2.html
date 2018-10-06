@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+	  <!--Import materialize.css-->
+	  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		 <!--Dynamically Import external HTML.css-->
+		
+		 <!--Local Styling-->
+		<style>
+			img {
+					max-width: 100%;
+					max-height: 100%;
+			}
+			div.main {
+					padding-left: 5%;
+					padding-right: 5%;
+					padding-top:2.5%;
+			}
+			div.note {
+					margin: 10px;
+					padding-left: 50px;
+					padding-right: 50px;
+			div.nav-wrapper{
+					
+			}
+			
+		</style>
+		<script type="text/javascript" src="js/dygraph-combined-dev.js"></script>
+		<style>
+			.dygraph-legend > span { display: none; }
+			.dygraph-legend > span.highlight { display: inline; }
+		</style>
+	</head>
+	<body>
+
+		<!--Site Navigation-->
+  <nav>
+    <div class="nav-wrapper light-green darken-2">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="modal-trigger" href="#modal">Motivation</a></li>
+        <li class="active"><a href="index.html">Intermediate Results</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="opensource.html">Source Code</a></li>
+      </ul>
+    </div>
+  </nav>
+<div class="main">
+  <div id="graph" style="width:100%; height:600px;"></div>
+	<p style= padding-top:5%><b>*</b>Mousing over the above graph reveals that several series' have gaps. This is because 74 songs - 72 Instrumental and 2 Incomprehensibly Foreign - have been omitted. Curious as to what it means for a song to be Incomprehensibly Foreign? Refer to <a href="research.html">Question 222</a></p>
+	
+	<p><b>NOTE:</b> The majority of songs depicted with low Unique Word counts (less than 25) are songs that reappeared on the Billboard Hot 100 some second year who's lyric content, due to an unfortunate <i>a priori</i> sorting mechanism, requires reassessment. Expect correction of data reported for these particular tracks by April 9th. Also, about 250 newer songs requiring further lexical correction are responsible for some of the 'high uniqueness' scatter depicted above. Expect these values to recede by April 16th.</p>
+</div>
+
+
+<div id="modal" class="modal bottom-sheet">
+          <div class="modal-content">
+            <h4>Have popular songs become less unique?</h4>
+						<p>In early 2015 I had finished listening to a poplar song and couldn't help but think it was overly repetitive. It seemed to me, and to wide agreement of friends, that modern 'hits' have devolved into hyper-looped melody and chant. Having recently decided to pursue a masters degree in data science I thought it worthwhile to explore the craft by scraping, processing, and analyzing my way through a simple project. It was then that the question "By exactly what degree have songs become less unique?" grew intriguing. This tiny website represents my effort to specify the answer to that question as well as what may be its surprising result. By analyzing the lyrics of every one of the Billboard Hot 100 songs since 1957, 5700 songs in all, <b>intermediate</b> findings suggest that popular music may have actually become <i>more</i> unique in the 21st century. <b>Next update April 9th.</b></p>
+          </div>
+        </div>
+	
+	  <!--Import jQuery before materialize.js-->
+	<script type="text/javascript">
+		g = new Dygraph(
+			document.getElementById("graph"),
+			"Uniqueness of Historic BH 100.csv", // path to CSV file
+		{  // options
+			title: 'Unique Word Count of Every* Song in the Billboard Hot 100 Since 1958',
+			titleHeight: 32,
+			ylabel: 'Unique Words',
+			xlabel: 'Year',
+			labelsDivStyles: {
+				'text-align': 'right',
+				'background': 'none'
+			},
+			highlightCircleSize: 2,
+			drawPoints: 1,
+			pointSize: 1.25,
+			strokeWidth: 0,
+
+			highlightSeriesOpts: {
+			strokeWidth: 2,
+			strokeBorderWidth: 0,
+			highlightCircleSize: 5
+			}
+		}
+		);          
+	</script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<script type="text/javascript">
+	$('#modal').openModal();
+	
+		$(document).ready(function(){
+		// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+		$('.modal-trigger').leanModal();
+		});
+	</script>
+	</body>
+</html>
