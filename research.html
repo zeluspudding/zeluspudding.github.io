@@ -41,6 +41,14 @@
 				padding-left: 90px;	
 				padding-right: 90px;
 			}
+
+			ul.blurb {
+				text-align: justify;
+				text-justify: inter-word;
+				padding-left: 90px;	
+				padding-right: 90px;
+			}			
+		
 			span.cdates {
 				color: LightSlateGray;
 				font-weight: normal;
@@ -62,23 +70,28 @@
     </div>
   </nav>
 	
-	<p class="blurb"><b>The graph on the home page is simple - it's a scatter plot that aims to answer the seemingly simple question "Have popular songs become less unique?". But answering that question - making that simple looking scatter plot, was anything but easy. Several challenges in data collection, correction, storage, organization, and communication needed to be solved before it could be plotted. In fact answering my  original question actually required first breaking it up into over 508 smaller questions and then answering those. </p>
+	<p class="blurb"><b>The graph on the <a href="http://unclassicallytrained.com">home page</a> is simple - it's a scatter plot that aims to answer the seemingly simple question "Have popular songs become less unique?" But answering that question - making that simple looking scatter plot, wasn't so easy. Several challenges in data collection, correction, storage, organization, and communication needed to be solved before it could be plotted. In fact answering that question actually required first breaking it up into over 508 smaller questions and then answering those. 
 	
-	</p> One by one I found the answers and took note. This page is the record of all the questions and problems I solved to make my simple scatter plot and formally answer my original question. For tour guiding reasons I've included the core questions directly below;
-	<ul>
-	What ruler should I use to measure the "uniqeness" of a song?
-	<li>Is my ruler selection justified?</li>
-	<li>Is there a complete database of most popular music lyrics I can just download?</li>
-	<li>Oh damn, that lyrics database doesn't exist. How do I make it?</li>
-	<li>Ah man, the 5,700 song lyrics I've collected from four different sources have errors and extra annotations in them - how do I clean them before becoming 72 years old?</li>
-	<li>I've never made a website before - how do I make one to communicate my findings?</li>
-	</ul>  
-	... the other 504 questions mostly had to do with learning R (it was my first time), scraping websites (also my first time), and making this website.
+	<p class="blurb"> One by one I answered those questions and, as if creating a personal <a href="https://stackoverflow.com/company">stackoverflow</a>, I took note of each answer. This page is the record of all the problems I solved to make my simple scatter plot and formally answer my original question. For tour guiding reasons I've included the big picture questions directly below; </p>
 	
-	So the next time you see a scatter plot and think, meh. Stop to consider it may have taken someone 3 months of coming home from work everyday and researching until </p>
+		<ul class="blurb">
+			<li>- <a href="#517">What is this project's scope?</a></li>
+			<li>- <a href="#654166">What ruler should I use to measure the "uniqueness" of a song? Is that ruler selection justified?</a></li>
+			<li>- <a href="#515">Is there a complete database of most popular music lyrics I can just download?</a></li>
+			<li>- Oh damn, that lyrics database doesn't exist. <a href="#733">How do I make it?</a></li>
+			<li>- <a href="#823">Is the data I have good?</a></li>
+			<li>- Ah man, the 5,700 song lyrics I've collected from four different sources have lots of errors in them - <a href="#1084">how do I clean them before becoming 72 years old?</a></li>
+			<li>- Ok, I thought I knew what words were but now I'm not sure. <a href="#1256">What is a word?</a> </li>
+			<li>- I've never made a website before - <a href="#12890">how do I make one to communicate my findings?</a></li>
+		</ul>
+		
+	<p class="blurb">
+	... the other hundreds of questions mostly had to do with learning R (it was my first time), scraping websites (also my first time), and wrangling data.
+	
+	Finally, one should question if my findings align with other research. They do! The main conclusion from my work was that Rap music injected the Billboard 100 with a surprising amount of lyrical variety starting in the 90's... mainly from an explosion of artists using more slang in their prose. You'll observe that my last note in this journal was April 18th 2015 and two weeks later the <a href="https://www.pbs.org/newshour/science/computer-scientists-prove-80s-music-boring">Royal Society Open Science journal</a> published a paper <a href="http://rsos.royalsocietypublishing.org/content/2/5/150081">"The evolution of popular music: USA 1960–2010"</a> in which the authors reached the same conclusion, albeit with far more fidelity (and expense). How exciting!?!</p>
 
-<p class="blurb">Lastly, know that the voice in the following journal is not one in pursuit of political correctness but one in pursuit of correctness. These questions document many failures of logic and their respective correction. At times the tempo of investigation did not allow error free documentation (there will be typos). It is presented to you here as is. Cheers.
- </b></p>
+<!-- <p class="blurb">2018 UPDATE: The New York Times published a neat piece <a href="https://www.nytimes.com/interactive/2018/08/09/opinion/do-songs-of-the-summer-sound-the-same.html">"Why Songs of the Summer Sound the Same"</a> based on acoustic analysis by music streaming service Spotify. In some ways the research validates my 2015 findings but maybe invalidates them in others. I'm still unsure. For example we agree that radio listeners in the late 80's and 90's enjoyed some of the highest variety music they had ever heard. Yet Spotify's analysis suggests that 2009 - 2012 saw a slump in uniqueness while my findings showed that the unique word count throughout the 2000's was about the same is in the 90's (which was between 75 and 350). Still yet, maybe Spotify's analysis and mine are saying the same things in different ways; After all, if the average "unique word count" of top songs hasn't changed in over 20 years then maybe they would seem more unique if that average where to just change modestly.. In the same way that a new outfit looses it's appeal if worn two weeks in a row.
+ </b></p> -->
 	<!--dygraph-->
 <div>
 <iframe width="100%" height="480" frameborder="0" seamless="seamless" scrolling="no" src="QA Graph.html" ></iframe>
@@ -87,6 +100,20 @@
 	<!--Notes-->
 <div class="main">
   <ul class="collapsible" data-collapsible="expandable">
+    <li>
+      <div id="654166" class="collapsible-header active"><span class="numbering">0</span>What definition of "Unique" will I use to measure song "Uniqueness?"<span class="cdates" style="float:right">2/10/2015 7:16 PM</span></div>
+      <div class="collapsible-body">
+        <div class="note">
+          <div style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<div>There are several ways one can define a measure of "uniqueness" for music; lyrical uniqueness, melodic uniqueness, idea or concept uniqueness (i.e. is a song about love or triumph). Perhaps a few more... The complete measure of a song's uniqueness is probably a combination of all of those things. But it's too expensive to develop instrumentation for measuring all of those. Instead, I will use "unique word's per song" as my uniqueness measure.
+
+</div><div><br/></div><div>
+
+This approach certainly has its flaws but it's probably not far from the truth. After all a chorus lyric tends to repeat in tandem with chorus melodics and chorus concepts / ideas (the lyric supplies the idea). So while crude, I'll assume that  "unique word's per song" is a fair enough proxy for the thing I seek to measure here.
+</div></div>
+        </div>
+      </div>
+    </li>
     <li>
       <div id="511" class="collapsible-header"><span class="numbering">1</span>Can multiple dygraphs [r] be stitched together in one browser window to make a sweet infographic?<span class="cdates" style="float:right">2/10/2015 7:30 PM</span></div>
       <div class="collapsible-body">
@@ -1089,7 +1116,7 @@ Hit keyboard ESCAPE button.
       </div>
     </li>
     <li>
-      <div id="727" class="collapsible-header"><span class="numbering">68</span>Is Seven Little Girls (Sitting in the Back Seat) a pedo song?<span class="cdates" style="float:right">3/4/2015 10:12 PM</span></div>
+      <div id="727" class="collapsible-header"><span class="numbering">68</span>Is it just me or is Seven Little Girls (Sitting in the Back Seat) a strange song?<span class="cdates" style="float:right">3/4/2015 10:12 PM</span></div>
       <div class="collapsible-body">
         <div class="note">
           <div style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
@@ -5867,7 +5894,7 @@ http://www.inside-r.org/packages/cran/XML/docs/newXMLDoc
       <div class="collapsible-body">
         <div class="note">
           <div style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
-The one that you let bother you.<br/></div>
+Andrew! Why are you asking this right now!?<br/></div>
         </div>
       </div>
     </li>
